@@ -101,7 +101,7 @@ def main():
     test = df_test.values
 
     # Set the values of k
-    k_list = [x for x in range(1, len(train)+1, 2)]
+    k_list = [x for x in range(1, len(train), 2)]
 
     # Evaluate prediction according to the values of k
     errors = []
