@@ -84,7 +84,8 @@ def main():
     df = pd.read_csv("./iris.csv", header=None)
 
     # Shuffle the dataset
-    df = df.sample(frac=1, random_state=69)
+    seed = 69
+    df = df.sample(frac=1, random_state=seed)
 
     # Split DataFrame based on classification
     df_setosa = df[df[4] == 'Iris-setosa']
@@ -100,7 +101,7 @@ def main():
     test = df_test.values
 
     # Set the values of k
-    k_list = [x for x in range(1, 20, 2)]
+    k_list = [x for x in range(1, len(train)+1, 2)]
 
     # Evaluate prediction according to the values of k
     errors = []
@@ -109,7 +110,8 @@ def main():
     
     # Plot the errors
     plt.plot( k_list, errors)
-    plt.title('Classification error rate vs k')
+    plt.suptitle('Classification error rate vs k', fontsize=20)
+    plt.title(f'with seed of {seed}')
     plt.xlabel('k')
     plt.ylabel('Classification error rate')
     plt.show()
